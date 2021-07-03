@@ -8,7 +8,7 @@ public class StudentFacility {
     private final StudentRepository studentRepository;
 
     public StudentFacility() {
-        this.studentRepository = new StudentRepository();
+        this.studentRepository = StudentRepository.getInstance();
     }
 
     public void save(Student student) {

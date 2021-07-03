@@ -7,11 +7,20 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class StudentRepository {
+
+    private static StudentRepository studentRepository;
     private Long nextId = 0L;
     private final List<Student> students;
 
-    public StudentRepository() {
+    private StudentRepository() {
         this.students = new ArrayList<>();
+    }
+
+    protected static StudentRepository getInstance() {
+        if (Objects.isNull(studentRepository)) {
+            studentRepository = new StudentRepository();
+        }
+        return studentRepository;
     }
 
     public void saveNewStudent(Student student) {
