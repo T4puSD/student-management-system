@@ -84,7 +84,8 @@ public class Main {
         try {
             int i = Integer.parseInt(age);
             if (i < 0 || i > 120) {
-                System.out.println("Invalid Age!");
+                System.out.println("Invalid Age! Try Again(Input 0 to go back to Main Menu)");
+                return null;
             }
             return i;
         } catch (NumberFormatException exception) {
