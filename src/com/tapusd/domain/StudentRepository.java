@@ -23,14 +23,14 @@ public class StudentRepository {
         return studentRepository;
     }
 
-    public void saveNewStudent(Student student) {
+    protected void saveNewStudent(Student student) {
        student.setId(nextId + 1);
        validateStudentsBeforeSave(student);
        this.students.add(student);
        nextId+=1;
     }
 
-    public boolean deleteStudent(Long studentId) {
+    protected boolean deleteStudent(Long studentId) {
         if (Objects.nonNull(studentId) && studentId > 0) {
             return this.students.removeIf(student -> student.getId().equals(studentId));
         }
@@ -46,24 +46,24 @@ public class StudentRepository {
         }
     }
 
-    public List<Student> getAll() {
+    protected List<Student> getAll() {
         return this.students;
     }
 
-    public Optional<Student> findById(Long studentId) {
+    protected Optional<Student> findById(Long studentId) {
         return this.students.stream().filter(student -> student.getId().equals(studentId)).findFirst();
     }
 
-    public Optional<Student> findByAge (Integer age) {
+    protected Optional<Student> findByAge(Integer age) {
         return this.students.stream().filter(student -> student.getAge().equals(age)).findFirst();
     }
 
-    public List<Student> getAllStudentAgeGreaterThanEqual(Integer age) {
+    protected List<Student> getAllStudentAgeGreaterThanEqual(Integer age) {
         return this.students.stream().filter(student -> student.getAge() >= age).collect(Collectors.toList());
     }
 
 
-    public List<Student> getAllStudentAgeLessThanEqual(Integer age) {
+    protected List<Student> getAllStudentAgeLessThanEqual(Integer age) {
         return this.students.stream().filter(student -> student.getAge() <= age).collect(Collectors.toList());
     }
 }
