@@ -83,7 +83,7 @@ public class Main {
 
         try {
             int i = Integer.parseInt(age);
-            if (i < 0) {
+            if (i < 0 || i > 120) {
                 System.out.println("Invalid Age!");
             }
             return i;
