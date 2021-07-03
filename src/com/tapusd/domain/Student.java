@@ -6,6 +6,8 @@ public class Student {
     private Integer age;
     private String department;
 
+    public Student () {}
+
     public Student(String name, Integer age, String department) {
         this.name = name;
         this.age = age;
