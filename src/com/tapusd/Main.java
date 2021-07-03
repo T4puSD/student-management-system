@@ -94,30 +94,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-//        Student student = new Student("tapu", 23, "CSE");
-//        studentFacility.save(student);
-//        Student student1 = new Student("Jack", 53, "CSE");
-//        studentFacility.save(student1);
-//        Student student2 = new Student("Miller", 33, "CSE");
-//        studentFacility.save(student2);
-//        Student student3 = new Student("Jonnathon", 43, "CSE");
-//        studentFacility.save(student3);
-//        Student student4 = new Student("Jack The Ripper", 18, "CSE");
-//        studentFacility.save(student4);
-//
-//        studentFacility.getAll();
-//        studentFacility.delete(2L);
-//        studentFacility.getAll();
-//        Student student5 = new Student("WingMan", 23, "CSE");
-//        studentFacility.save(student5);
-//        studentFacility.getAll();
-//
-//        studentFacility.getAllStudentAgeGreaterThanEqual(30);
-//        studentFacility.getAllStudentAgeLessThanEqual(25);
-//        studentFacility.findByAge(18);
-//
-//        studentFacility.save(new Student(null, null,null));
-
         boolean isActive = true;
         while (isActive) {
             printMainMenu();
