@@ -35,6 +35,7 @@ public class Main {
 
 
     public static void main(String[] args) {
+
         boolean isActive = true;
         while (isActive) {
             printMainMenu();
@@ -53,9 +54,37 @@ public class Main {
                     break;
                 case "3":
                     System.out.println("Search Students");
+                    System.out.println(stringGenerator('=', 30));
+                    System.out.println(stringGenerator('=', 30));
+                    System.out.println("1. Search By Name");
+                    System.out.println("2. Search By Age");
+                    System.out.println("3. Search By Department");
+                    System.out.println(stringGenerator('=', 30));
+                    System.out.println(stringGenerator('=', 30));
+                    System.out.println(stringGenerator('#', 10) + "Choose: ");
+                    String chooseSearchOption = scanner.nextLine();
+                    switch (chooseSearchOption) {
+                        case "1":
+                            System.out.println("Enter the name to Search: ");
+                            String nameQuery = scanner.nextLine();
+                            studentFacility.findByName(nameQuery);
+                            break;
+                        case "2":
+                            break;
+                        case "3":
+                            System.out.println("Enter the department name: ");
+                            String departmentQuery = scanner.nextLine();
+                            studentFacility.findAllByDepartment(departmentQuery);
+                            break;
+                    }
                     break;
                 case "4":
                     System.out.println("Delete Student");
+                    System.out.println("Enter student id to delete: ");
+                    String deleteStudentId = scanner.nextLine();
+                    if (Objects.nonNull(deleteStudentId) && !deleteStudentId.isBlank()) {
+                        studentFacility.delete(Long.parseLong(deleteStudentId));
+                    }
                     break;
                 case "5":
                     System.out.println("Bye");

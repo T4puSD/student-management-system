@@ -66,4 +66,12 @@ public class StudentRepository {
     protected List<Student> getAllStudentAgeLessThanEqual(Integer age) {
         return this.students.stream().filter(student -> student.getAge() <= age).collect(Collectors.toList());
     }
+
+    public Optional<Student> findByName(String nameQuery) {
+        return students.stream().filter(student -> nameQuery.equalsIgnoreCase(student.getName())).findFirst();
+    }
+
+    public List<Student> findAllByDepartment(String departmentQuery) {
+        return students.stream().filter(student -> departmentQuery.equalsIgnoreCase(student.getDepartment())).collect(Collectors.toList());
+    }
 }

@@ -1,6 +1,7 @@
 package com.tapusd.domain;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class StudentFacility {
@@ -63,4 +64,19 @@ public class StudentFacility {
         }
     }
 
+    public void findByName(String nameQuery) {
+        if (Objects.isNull(nameQuery) || nameQuery.isBlank()) {
+            throw new IllegalArgumentException("Name to be search can not be null");
+        }
+        Optional<Student> byName = studentRepository.findByName(nameQuery);
+        singleStudentPrinter(byName);
+    }
+
+    public void findAllByDepartment(String departmentQuery) {
+        if (Objects.isNull(departmentQuery) || departmentQuery.isBlank()) {
+            throw new IllegalArgumentException("Department to be search can not be null");
+        }
+        studentRepository.findAllByDepartment(departmentQuery).forEach(System.out::println);
+
+    }
 }
