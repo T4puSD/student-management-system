@@ -1,5 +1,7 @@
 package com.tapusd.domain;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -39,9 +41,9 @@ public class StudentRepository {
 
     private void validateStudentsBeforeSave(Student student) {
         if (Objects.isNull(student) ||
-                Objects.isNull(student.getName()) ||
+                StringUtils.isBlank(student.getName()) ||
                         Objects.isNull(student.getAge()) ||
-                                Objects.isNull(student.getDepartment())) {
+                                StringUtils.isBlank(student.getDepartment())) {
            throw new IllegalArgumentException("Invalid student information provided!");
         }
     }
@@ -73,5 +75,10 @@ public class StudentRepository {
 
     public List<Student> findAllByDepartment(String departmentQuery) {
         return students.stream().filter(student -> departmentQuery.equalsIgnoreCase(student.getDepartment())).collect(Collectors.toList());
+    }
+
+    public void deleteAll() {
+        this.students.clear();
+        this.nextId = 0L;
     }
 }
