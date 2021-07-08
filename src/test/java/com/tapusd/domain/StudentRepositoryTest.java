@@ -16,7 +16,7 @@ class StudentRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        studentRepository = StudentRepository.getInstance();
+        studentRepository = new StudentRepository();
         studentRepository.saveNewStudent(new Student("John", 24,"BBA"));
         studentRepository.saveNewStudent(new Student("Bella", 25,"CSE"));
         studentRepository.saveNewStudent(new Student("Miller", 22,"CSE"));
@@ -25,16 +25,6 @@ class StudentRepositoryTest {
     @AfterEach
     void tearDown() {
         studentRepository.deleteAll();
-    }
-
-
-    @Test
-    void whenGetInstanceItShouldReturnRepositoryObject() {
-        //when
-        StudentRepository studentRepositoryTest = StudentRepository.getInstance();
-
-        //then
-        assertThat(studentRepositoryTest).isNotNull();
     }
 
     @Test
@@ -174,7 +164,7 @@ class StudentRepositoryTest {
         //given
         int searchAge = 24;
         //when
-        List<Student> allStudentAgeLessThanEqual = studentRepository.getAllStudentAgeLessThanEqual(searchAge);
+        List<Student> allStudentAgeLessThanEqual = studentRepository.getAllStudentAgeGreaterThanEqual(searchAge);
         //then
         assertThat(allStudentAgeLessThanEqual)
                 .size()

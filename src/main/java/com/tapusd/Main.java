@@ -2,6 +2,7 @@ package com.tapusd;
 
 import com.tapusd.domain.Student;
 import com.tapusd.domain.StudentFacility;
+import com.tapusd.domain.StudentRepository;
 import com.tapusd.handlers.UserInputHandler;
 
 import java.util.Arrays;
@@ -10,7 +11,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static final StudentFacility studentFacility = new StudentFacility();
+    private static final StudentFacility studentFacility = new StudentFacility(new StudentRepository());
     private static final UserInputHandler userInputHandler = new UserInputHandler();
     private static final Scanner scanner = new Scanner(System.in);
 
