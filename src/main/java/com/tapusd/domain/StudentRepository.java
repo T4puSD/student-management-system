@@ -18,10 +18,10 @@ public class StudentRepository {
     }
 
     protected void saveNewStudent(Student student) {
-       student.setId(nextId + 1);
        validateStudentsBeforeSave(student);
-       this.students.add(student);
        nextId+=1;
+       student.setId(nextId);
+       this.students.add(student);
     }
 
     protected boolean deleteStudent(Long studentId) {
