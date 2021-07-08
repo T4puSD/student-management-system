@@ -17,7 +17,6 @@ class StudentRepositoryTest {
     @BeforeEach
     void setUp() {
         studentRepository = StudentRepository.getInstance();
-        studentRepository.deleteAll();
         studentRepository.saveNewStudent(new Student("John", 24,"BBA"));
         studentRepository.saveNewStudent(new Student("Bella", 25,"CSE"));
         studentRepository.saveNewStudent(new Student("Miller", 22,"CSE"));
@@ -39,7 +38,7 @@ class StudentRepositoryTest {
     }
 
     @Test
-    void givenValidStudentWhenSaveNewStudentItShouldAssigningNewId() {
+    void givenValidStudentWhenSaveNewStudentItShouldAssignNewId() {
         //given
         Student student = new Student("Sam", 25, "CSE");
 
@@ -68,7 +67,7 @@ class StudentRepositoryTest {
     }
 
     @Test
-    void givenInvalidStudentNameWhenSaveNewStudentItShouldNotSaveNewStudent() {
+    void givenInvalidStudentNameWhenSaveNewStudentItShouldThrowException() {
         //given
         Student student = new Student("", 25, "BBA");
 
@@ -78,7 +77,7 @@ class StudentRepositoryTest {
     }
 
     @Test
-    void givenInvalidStudentDepartmentWhenSaveNewStudentItShouldNotSaveNewStudent() {
+    void givenInvalidStudentDepartmentWhenSaveNewStudentItShouldThrowException() {
         //given
         Student student = new Student("Gorge", 25, "");
 
@@ -128,7 +127,10 @@ class StudentRepositoryTest {
         Optional<Student> byId = studentRepository.findById(studentId);
         //then
         assertThat(byId)
-                .isPresent();
+                .isPresent()
+                .get()
+                .extracting("id")
+                .isEqualTo(studentId);
     }
 
     @Test
