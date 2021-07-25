@@ -216,6 +216,7 @@ class StudentRepositoryTest {
         List<Student> allByDepartment = studentRepository.findAllByDepartment(department);
         //then
         assertThat(allByDepartment)
+                .hasSize(2)
                 .filteredOn("department", department)
                 .hasSize(2);
     }
